@@ -1,0 +1,76 @@
+#user www-data;
+worker_processes 4;
+pid /opt/conf/nginx/nginx.pid;
+
+worker_rlimit_nofile 30000;
+
+events {
+    worker_connections 10240;
+    use epoll;
+}
+
+http {
+    include mime.types;
+    default_type application/octet-stream;
+
+    sendfile on;
+    log_format  main  '$http_x_forwarded_for,,$remote_addr,,$host,,$remote_user,,'
+                      '[$time_local],,$request,,$status,,$body_bytes_sent,,'
+                      '$http_referer,,$http_user_agent,,$http_x_sohupassport_userid,,$request_time,,$upstream_response_time,,$upstream_addr';
+	access_log /opt/logs/ng_access.log main;
+	error_log /opt/logs/ng_error.log;
+
+
+    server_names_hash_max_size          512;
+    server_names_hash_bucket_size       128;
+    
+    client_header_buffer_size           8k;
+    large_client_header_buffers         4 4k;
+    connection_pool_size                512;
+    request_pool_size                   1024k;
+    
+    output_buffers                      1 1024k;
+    postpone_output                     1460;
+    ignore_invalid_headers              on;
+    
+
+    proxy_redirect                      off;
+    proxy_set_header			Host $host;
+    proxy_set_header                    X-Real-IP $remote_addr;
+    proxy_set_header                    X-Forwarded-For $proxy_add_x_forwarded_for;
+    
+    client_max_body_size                20m;
+    client_body_buffer_size             128k;
+    
+    proxy_connect_timeout               120;
+    proxy_send_timeout                  120;
+    proxy_read_timeout                  120;
+    
+    proxy_buffer_size                   8k;
+    proxy_buffers                       8 32k;
+    proxy_busy_buffers_size             64k;
+
+    proxy_headers_hash_bucket_size      64;
+    proxy_headers_hash_max_size         512;
+
+    proxy_ignore_client_abort           on;
+    proxy_temp_file_write_size          64k;
+    
+    upstream hctest {
+        server 10.16.4.157:8888;
+    }
+    
+    server {
+        listen 80 default_server;
+        server_name 10.16.4.157;
+        add_header Cache-Control "private,no-cache,must-revalidate";
+
+        location /api/ {
+            rewrite ^/api(.*)$ $1 break;
+            proxy_pass http://hctest;
+        }
+    }
+
+
+}
+

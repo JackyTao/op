@@ -1,0 +1,7 @@
+# ignore objects and archives
+*.[oa]
+*.pyc
+logs/*log*
+.project
+.pydevproject
+.settings/*

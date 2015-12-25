@@ -1,0 +1,3 @@
+
+ansible <pattern_goes_here> -m <module_name> -a <argument>
+
