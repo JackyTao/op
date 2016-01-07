@@ -1,10 +1,6 @@
 " 配置vundle安装
 set nocompatible " be iMproved
 filetype off " required!
-filetype plugin on
-
-set hidden
-syntax enable
 
 
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -20,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 "
 " original repos on github
 " autocompletion
-"Bundle 'davidhalter/jedi-vim'
 " Golang
 Bundle 'fatih/vim-go'
 Bundle 'davidhalter/jedi-vim'
@@ -33,17 +28,14 @@ Bundle 'kien/ctrlp.vim'
 " git plugin
 Bundle 'tpope/vim-fugitive'
 " syntax checking plugin
-"Bundle 'vim-scripts/Syntastic'
-Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/Syntastic'
+"Bundle 'scrooloose/syntastic'
 " comment code
 Bundle 'scrooloose/nerdcommenter'
 " tag of code
 Bundle 'majutsushi/tagbar'
 " search file
 Bundle 'mileszs/ack.vim'
-
-" markdown
-Bundle 'plasticboy/vim-markdown'
 
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'Lokaltog/vim-easymotion'
@@ -59,6 +51,7 @@ Bundle 'L9'
 
 " Mark down
 Bundle 'plasticboy/vim-markdown'
+
 
 " coffee-script
 Bundle 'kchmck/vim-coffee-script'
