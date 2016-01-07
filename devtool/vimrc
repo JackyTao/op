@@ -152,3 +152,12 @@ filetype plugin indent on
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+"
+" Golang map
+" au: automatic
+" FileType go: golang file
+" <leader> is defined previously: ','
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>ds <Plug>(go-def-split)
+au FileType go nmap <leader>gd <Plug>(go-doc)
