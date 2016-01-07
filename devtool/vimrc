@@ -7,7 +7,7 @@ set hidden
 syntax enable
 
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 " let Vundle manage Vundle
@@ -23,12 +23,13 @@ Plugin 'VundleVim/Vundle.vim'
 "Bundle 'davidhalter/jedi-vim'
 " Golang
 Bundle 'fatih/vim-go'
+Bundle 'davidhalter/jedi-vim'
 " file tree
 Bundle 'scrooloose/nerdtree'
 " file search
 Bundle 'kien/ctrlp.vim'
 " file buffer search
-Bundle 'sjbach/lusty'
+"Bundle 'sjbach/lusty'
 " git plugin
 Bundle 'tpope/vim-fugitive'
 " syntax checking plugin
@@ -54,24 +55,31 @@ Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'Lokaltog/vim-powerline'
 
 " vim-scripts repos
-"Bundle 'L9'
+Bundle 'L9'
+
+" Mark down
+Bundle 'plasticboy/vim-markdown'
+
+" coffee-script
+Bundle 'kchmck/vim-coffee-script'
+
+" stylus
+Bundle 'wavded/vim-stylus'
 
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-
-call vundle#end()            " required
-
+" Bundle 'git://git.wincent.com/command-t.git'
 
 "
 " 一些基本配置
 "
+call vundle#end()
 filetype plugin indent on " required!
 " Set to auto read when a file is changed from the outside
 set autoread
 let mapleader = ','
 let g:mapleader = ','
 let &termencoding=&encoding
-set fileencodings=utf-8
+set fileencodings=utf-8,gbk
 
 let g:syntastic_python_checker_args = "--max-complexity 13 --ignore=E501"
 let g:syntastic_always_populate_loc_list=1
@@ -79,6 +87,9 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_echo_current_error=1
 "let g:syntastic_auto_jump=1
 "let g:syntastic_auto_loc_list=1
+
+" Mark down
+let g:vim_markdown_initial_foldlevel=1
 
 " Ignore case when searching
 set ignorecase smartcase
@@ -104,7 +115,14 @@ vmap <c-c> "+y
 " 状态栏配置
 set laststatus =2 "always has status line
 
-" colorscheme torte
+"colorscheme torte
+
+"colorscheme desert
+let g:molokai_original = 1
+colorscheme desert
+
+" comments in vim invisible when use molokai
+"colorscheme molokai
 
 
 "
@@ -114,11 +132,11 @@ set laststatus =2 "always has status line
 " NERDTree=====
 " au VimEnter * NERDTree
 nmap <leader>nd :NERDTreeToggle<CR>
-"nmap <leader>tb :TagbarToggle<CR>
+nmap <leader>tb :TagbarToggle<CR>
 let NERDTreeWinSize=24
 let NERDTreeIgnore=['\.pyc', '\.swp', '\~']
 "tagbar window size
-"let g:tagbar_width = 25 
+let g:tagbar_width = 25 
 "switch window
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -128,6 +146,9 @@ nnoremap <c-l> <c-w>l
 "let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme='solarized256_dark'
 set t_Co=256 " 在终端启用256色
+
+syntax enable
+filetype plugin indent on
 
 "
 " Brief help
