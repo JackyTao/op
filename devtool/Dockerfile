@@ -27,3 +27,14 @@ ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/tools
 
 EXPOSE 8000
 #ADD vimrc /root/.vimrc
+
+# affect lines below, can change WORKDIR many times
+WORKDIR /root
+
+#CMD ["executable", "param1", "param2"]
+#CMD ["param1", "param2"]  # as default parameters to ENTRYPOINT
+
+# ENTRYPOINT is to make run as executable
+# sudo docker run <image> <cmd>
+# <cmd> will be params of ENTRYPOINT
+#ENTRYPOINT ["cmd", "param1", "param2"]
