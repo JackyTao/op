@@ -65,5 +65,5 @@ def parseContent(content):
 if __name__ == '__main__':
     c = urllib2.urlopen('http://www.soku.com/newtop/movie.html').read()
     soup = BeautifulSoup(c)
-    json.dump(parseSoup(soup, p), open('movies.json', 'w'))
+    #json.dump(parseSoup(soup, p), open('movies.json', 'w'))
     print 'aaa'

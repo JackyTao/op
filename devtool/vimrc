@@ -160,13 +160,13 @@ filetype plugin indent on
 "
 "
 " python map
-autocmd FileType python nmap <leader>r :!python %<CR>
+autocmd FileType python nmap <leader>r :w<CR>:!python %<CR>
 
 " Golang map
 " au: autocmd
 " FileType go: golang file
 " <leader> is defined previously: ','
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>ds <Plug>(go-def-split)
-au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>r :w<CR><Plug>(go-run)
+au FileType go nmap <leader>b :w<CR><Plug>(go-build)
+au FileType go nmap <leader>ds :w<CR><Plug>(go-def-split)
+au FileType go nmap <leader>gd :w<CR><Plug>(go-doc)
