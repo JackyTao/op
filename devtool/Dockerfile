@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER Jacky Zhu <ztbjdx@163.com>
+ENV REFRESHED_AT 2016-01-21
 
 CMD echo executing CMD
 
@@ -31,6 +32,7 @@ EXPOSE 8000
 # affect lines below, can change WORKDIR many times
 WORKDIR /root
 
+# CMD will be replaced by cmd of docker run ...
 #CMD ["executable", "param1", "param2"]
 #CMD ["param1", "param2"]  # as default parameters to ENTRYPOINT
 
