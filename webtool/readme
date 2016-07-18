@@ -1,0 +1,7 @@
+// Use following on client:
+// As upload.py
+curl -X POST -F "file=@<path-of-file>" http://<target-host>:8080/upload
+curl -X POST -F "file=@/Users/jackyzhu/app.js.txt" http://file.zhutao.xyz:8080/upload
+
+
+// inspect.py is to echo info of request from various client
